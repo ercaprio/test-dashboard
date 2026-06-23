@@ -1,0 +1,19 @@
+{
+  "creatorsData": [
+    { "from": "traveler", "count": 134, "percentage": 53 },
+    { "from": "manager", "count": 89, "percentage": 35 },
+    { "from": "admin", "count": 31, "percentage": 12 }
+  ],
+  "serviceTypesData": [
+    { "type": "avia", "count": 178, "percentage": 70 },
+    { "type": "railway", "count": 52, "percentage": 21 },
+    { "type": "accommodation", "count": 24, "percentage": 9 }
+  ],
+  "statusesData": [
+    { "status": "open", "count": 67, "percentage": 26 },
+    { "status": "approved", "count": 112, "percentage": 44 },
+    { "status": "rejected", "count": 43, "percentage": 17 },
+    { "status": "expired", "count": 32, "percentage": 13 }
+  ],
+  "total": 254
+}

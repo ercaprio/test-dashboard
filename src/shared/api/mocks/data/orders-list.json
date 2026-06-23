@@ -1,0 +1,464 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "createdAt": "2024-06-01T08:30:00Z",
+      "serviceType": "avia",
+      "initiatorType": "TRAVELER",
+      "initiatorUserRole": { "id": 1, "roleKey": "TRAVELER", "user": { "id": 1, "firstName": "Асем", "lastName": "Нурланова" } },
+      "traveler": { "id": 1, "firstName": "Асем", "lastName": "Нурланова" },
+      "orderGroupFields": [
+        { "valueRu": "Командировка", "valueEn": "Business trip", "field": { "name": "Цель поездки", "shortName": "ЦП", "code": "purpose" } },
+        { "valueRu": "ТОО Технолайн", "valueEn": "Technoline LLP", "field": { "name": "Компания", "shortName": "Компания", "code": "company" } }
+      ],
+      "totalPrice": 87500,
+      "currency": "KZT",
+      "approvedStatuses": ["open"],
+      "externalStatuses": ["Assigned"],
+      "aviaStructure": { "departure": "Алматы", "arrival": "Москва", "type": "round", "depTime": "2024-07-01T10:00:00Z", "arrTime": "2024-07-10T18:00:00Z", "airlines": ["Air Astana"], "providers": ["AMADEUS"] },
+      "railStructure": null,
+      "hotelStructure": null,
+      "approveTimeLimit": "2026-07-08T23:59:59Z",
+      "externalRequestIds": []
+    },
+    {
+      "id": 2,
+      "createdAt": "2024-06-03T14:15:00Z",
+      "serviceType": "avia",
+      "initiatorType": "CLIENT",
+      "initiatorUserRole": { "id": 2, "roleKey": "CLIENT", "user": { "id": 2, "firstName": "Дина", "lastName": "Сейткалиева" } },
+      "traveler": { "id": 3, "firstName": "Дамир", "lastName": "Байжанов" },
+      "orderGroupFields": [
+        { "valueRu": "Отпуск", "valueEn": "Vacation", "field": { "name": "Цель поездки", "shortName": "ЦП", "code": "purpose" } },
+        { "valueRu": "АО Казтелеком", "valueEn": "Kaztelecom JSC", "field": { "name": "Компания", "shortName": "Компания", "code": "company" } },
+        { "valueRu": "Алматинский", "valueEn": "Almaty", "field": { "name": "Филиал", "shortName": "Филиал", "code": "branch" } }
+      ],
+      "totalPrice": 245000,
+      "currency": "KZT",
+      "approvedStatuses": ["approved"],
+      "externalStatuses": ["In Progress"],
+      "aviaStructure": { "departure": "Алматы", "arrival": "Стамбул", "type": "round", "depTime": "2024-07-15T03:30:00Z", "arrTime": "2024-07-25T22:00:00Z", "airlines": ["Turkish Airlines"], "providers": ["GALILEO"] },
+      "railStructure": null,
+      "hotelStructure": null,
+      "approveTimeLimit": "2024-06-28T23:59:59Z",
+      "externalRequestIds": ["9991"]
+    },
+    {
+      "id": 2,
+      "createdAt": "2024-06-05T09:00:00Z",
+      "serviceType": "avia",
+      "initiatorType": "TRAVELER",
+      "initiatorUserRole": { "id": 3, "roleKey": "TRAVELER", "user": { "id": 3, "firstName": "Арман", "lastName": "Токтаров" } },
+      "traveler": { "id": 3, "firstName": "Арман", "lastName": "Токтаров" },
+      "orderGroupFields": [
+        { "valueRu": "Конференция", "valueEn": "Conference", "field": { "name": "Цель поездки", "shortName": "ЦП", "code": "purpose" } }
+      ],
+      "totalPrice": 132000,
+      "currency": "KZT",
+      "approvedStatuses": ["rejected"],
+      "externalStatuses": ["Completed"],
+      "aviaStructure": { "departure": "Астана", "arrival": "Берлин", "type": "one-way", "depTime": "2024-07-22T06:00:00Z", "arrTime": "2024-07-22T11:45:00Z", "airlines": ["Lufthansa"], "providers": ["AMADEUS"] },
+      "railStructure": null,
+      "hotelStructure": null,
+      "approveTimeLimit": "2024-06-20T23:59:59Z",
+      "externalRequestIds": ["9992"]
+    },
+    {
+      "id": 4,
+      "createdAt": "2024-06-07T11:45:00Z",
+      "serviceType": "avia",
+      "initiatorType": "CLIENT",
+      "initiatorUserRole": { "id": 4, "roleKey": "CLIENT", "user": { "id": 4, "firstName": "Жанар", "lastName": "Ермекова" } },
+      "traveler": { "id": 5, "firstName": "Ерлан", "lastName": "Мухамеджанов" },
+      "orderGroupFields": [
+        { "valueRu": "Переговоры", "valueEn": "Negotiations", "field": { "name": "Цель поездки", "shortName": "ЦП", "code": "purpose" } },
+        { "valueRu": "БЦ Алатау", "valueEn": "Alatau BC", "field": { "name": "Офис", "shortName": "Офис", "code": "office" } }
+      ],
+      "totalPrice": 412953,
+      "currency": "KZT",
+      "approvedStatuses": ["expired"],
+      "externalStatuses": ["Onhold"],
+      "aviaStructure": { "departure": "Астана", "arrival": "Абу-Даби", "type": "one-way", "depTime": "2024-08-01T07:00:00Z", "arrTime": "2024-08-01T11:30:00Z", "airlines": ["Air Astana", "Etihad"], "providers": ["AMADEUS"] },
+      "railStructure": null,
+      "hotelStructure": null,
+      "approveTimeLimit": "2024-07-25T23:59:59Z",
+      "externalRequestIds": []
+    },
+    {
+      "id": 5,
+      "createdAt": "2024-06-09T16:00:00Z",
+      "serviceType": "avia",
+      "initiatorType": "ADMIN",
+      "initiatorUserRole": { "id": 6, "roleKey": "ADMIN", "user": { "id": 6, "firstName": "Гульнара", "lastName": "Сатыбалдиева" } },
+      "traveler": { "id": 7, "firstName": "Серик", "lastName": "Оразов" },
+      "orderGroupFields": [
+        { "valueRu": "Семинар", "valueEn": "Seminar", "field": { "name": "Цель поездки", "shortName": "ЦП", "code": "purpose" } },
+        { "valueRu": "ТОО Рога и Копыта", "valueEn": "Horns and Hooves LLP", "field": { "name": "Компания", "shortName": "Компания", "code": "company" } },
+        { "valueRu": "Южный", "valueEn": "South", "field": { "name": "Филиал", "shortName": "Филиал", "code": "branch" } },
+        { "valueRu": "VIP", "valueEn": "VIP", "field": { "name": "Категория", "shortName": "Катег.", "code": "category" } }
+      ],
+      "totalPrice": 318000,
+      "currency": "KZT",
+      "approvedStatuses": ["approved", "approved"],
+      "externalStatuses": ["Resolved"],
+      "aviaStructure": { "departure": "Алматы", "arrival": "Дубай", "type": "round", "depTime": "2024-07-20T22:00:00Z", "arrTime": "2024-08-03T02:00:00Z", "airlines": ["flydubai"], "providers": ["SABRE"] },
+      "railStructure": null,
+      "hotelStructure": null,
+      "approveTimeLimit": "2024-06-25T23:59:59Z",
+      "externalRequestIds": []
+    },
+    {
+      "id": 6,
+      "createdAt": "2024-06-11T08:20:00Z",
+      "serviceType": "avia",
+      "initiatorType": "TRAVELER",
+      "initiatorUserRole": { "id": 8, "roleKey": "TRAVELER", "user": { "id": 8, "firstName": "Ботагоз", "lastName": "Касымова" } },
+      "traveler": { "id": 8, "firstName": "Ботагоз", "lastName": "Касымова" },
+      "orderGroupFields": [
+        { "valueRu": "Обучение", "valueEn": "Training", "field": { "name": "Цель поездки", "shortName": "ЦП", "code": "purpose" } },
+        { "valueRu": "АО КазМунайГаз", "valueEn": "KazMunayGas JSC", "field": { "name": "Компания", "shortName": "Компания", "code": "company" } }
+      ],
+      "totalPrice": 76500,
+      "currency": "KZT",
+      "approvedStatuses": ["open", "open"],
+      "externalStatuses": ["Open"],
+      "aviaStructure": { "departure": "Алматы", "arrival": "Бишкек", "type": "one-way", "depTime": "2024-08-10T06:30:00Z", "arrTime": "2024-08-10T07:40:00Z", "airlines": ["Air Astana"], "providers": ["AMADEUS"] },
+      "railStructure": null,
+      "hotelStructure": null,
+      "approveTimeLimit": "2026-06-22T13:50:00Z",
+      "externalRequestIds": []
+    },
+    {
+      "id": 7,
+      "createdAt": "2024-06-13T13:30:00Z",
+      "serviceType": "avia",
+      "initiatorType": "CLIENT",
+      "initiatorUserRole": { "id": 9, "roleKey": "CLIENT", "user": { "id": 9, "firstName": "Аскар", "lastName": "Нурмаганбетов" } },
+      "traveler": { "id": 10, "firstName": "Диана", "lastName": "Берикова" },
+      "orderGroupFields": [
+        { "valueRu": "Командировка", "valueEn": "Business trip", "field": { "name": "Цель поездки", "shortName": "ЦП", "code": "purpose" } }
+      ],
+      "totalPrice": 154000,
+      "currency": "KZT",
+      "approvedStatuses": ["rejected", "rejected"],
+      "externalStatuses": ["In Progress"],
+      "aviaStructure": { "departure": "Астана", "arrival": "Анталья", "type": "round", "depTime": "2024-08-20T05:00:00Z", "arrTime": "2024-09-02T20:00:00Z", "airlines": ["Turkish Airlines", "Air Astana"], "providers": ["GALILEO"] },
+      "railStructure": null,
+      "hotelStructure": null,
+      "approveTimeLimit": "2024-06-30T23:59:59Z",
+      "externalRequestIds": ["9993"]
+    },
+    {
+      "id": 8,
+      "createdAt": "2024-06-15T10:00:00Z",
+      "serviceType": "avia",
+      "initiatorType": "TRAVELER",
+      "initiatorUserRole": { "id": 11, "roleKey": "TRAVELER", "user": { "id": 11, "firstName": "Куаныш", "lastName": "Абенов" } },
+      "traveler": { "id": 11, "firstName": "Куаныш", "lastName": "Абенов" },
+      "orderGroupFields": [
+        { "valueRu": "Отпуск", "valueEn": "Vacation", "field": { "name": "Цель поездки", "shortName": "ЦП", "code": "purpose" } },
+        { "valueRu": "Семья", "valueEn": "Family", "field": { "name": "Категория", "shortName": "Катег.", "code": "category" } },
+        { "valueRu": "ТОО Стандарт", "valueEn": "Standard LLP", "field": { "name": "Компания", "shortName": "Компания", "code": "company" } }
+      ],
+      "totalPrice": 560000,
+      "currency": "KZT",
+      "approvedStatuses": ["expired", "expired"],
+      "externalStatuses": ["Cancelled"],
+      "aviaStructure": { "departure": "Алматы", "arrival": "Сеул", "type": "one-way", "depTime": "2024-09-05T23:45:00Z", "arrTime": "2024-09-06T13:00:00Z", "airlines": ["Korean Air"], "providers": ["AMADEUS"] },
+      "railStructure": null,
+      "hotelStructure": null,
+      "approveTimeLimit": "2024-08-05T23:59:59Z",
+      "externalRequestIds": []
+    },
+    {
+      "id": 7,
+      "createdAt": "2024-06-17T15:45:00Z",
+      "serviceType": "avia",
+      "initiatorType": "CLIENT",
+      "initiatorUserRole": { "id": 12, "roleKey": "CLIENT", "user": { "id": 12, "firstName": "Зарина", "lastName": "Джаксыбекова" } },
+      "traveler": { "id": 13, "firstName": "Нурсултан", "lastName": "Жаксыбеков" },
+      "orderGroupFields": [
+        { "valueRu": "Переговоры", "valueEn": "Negotiations", "field": { "name": "Цель поездки", "shortName": "ЦП", "code": "purpose" } },
+        { "valueRu": "АО Самрук-Казына", "valueEn": "Samruk-Kazyna JSC", "field": { "name": "Компания", "shortName": "Компания", "code": "company" } }
+      ],
+      "totalPrice": 198000,
+      "currency": "KZT",
+      "approvedStatuses": ["approved", "open"],
+      "externalStatuses": ["Closed"],
+      "aviaStructure": { "departure": "Алматы", "arrival": "Лондон", "type": "round", "depTime": "2024-09-10T14:00:00Z", "arrTime": "2024-09-20T09:30:00Z", "airlines": ["British Airways"], "providers": ["GALILEO"] },
+      "railStructure": null,
+      "hotelStructure": null,
+      "approveTimeLimit": "2026-06-22T14:50:00Z",
+      "externalRequestIds": ["9994"]
+    },
+    {
+      "id": 10,
+      "createdAt": "2024-06-19T09:10:00Z",
+      "serviceType": "avia",
+      "initiatorType": "TRAVELER",
+      "initiatorUserRole": { "id": 14, "roleKey": "TRAVELER", "user": { "id": 14, "firstName": "Мадина", "lastName": "Тулегенова" } },
+      "traveler": { "id": 14, "firstName": "Мадина", "lastName": "Тулегенова" },
+      "orderGroupFields": [
+        { "valueRu": "Конференция", "valueEn": "Conference", "field": { "name": "Цель поездки", "shortName": "ЦП", "code": "purpose" } }
+      ],
+      "totalPrice": 380000,
+      "currency": "KZT",
+      "approvedStatuses": ["approved", "rejected"],
+      "externalStatuses": ["Onhold", "Completed"],
+      "aviaStructure": { "departure": "Астана", "arrival": "Вена", "type": "one-way", "depTime": "2024-09-15T07:30:00Z", "arrTime": "2024-09-15T11:00:00Z", "airlines": ["Austrian Airlines"], "providers": ["AMADEUS"] },
+      "railStructure": null,
+      "hotelStructure": null,
+      "approveTimeLimit": "2024-08-30T23:59:59Z",
+      "externalRequestIds": []
+    },
+    {
+      "id": 11,
+      "createdAt": "2024-06-21T12:00:00Z",
+      "serviceType": "avia",
+      "initiatorType": "ADMIN",
+      "initiatorUserRole": { "id": 15, "roleKey": "ADMIN", "user": { "id": 15, "firstName": "Рустем", "lastName": "Ахметов" } },
+      "traveler": { "id": 16, "firstName": "Айгуль", "lastName": "Сансызбаева" },
+      "orderGroupFields": [
+        { "valueRu": "Обучение", "valueEn": "Training", "field": { "name": "Цель поездки", "shortName": "ЦП", "code": "purpose" } },
+        { "valueRu": "Технический", "valueEn": "Technical", "field": { "name": "Отдел", "shortName": "Отдел", "code": "department" } },
+        { "valueRu": "АО КазТрансОйл", "valueEn": "KazTransOil JSC", "field": { "name": "Компания", "shortName": "Компания", "code": "company" } }
+      ],
+      "totalPrice": 295000,
+      "currency": "KZT",
+      "approvedStatuses": ["approved", "expired"],
+      "externalStatuses": ["Completed"],
+      "aviaStructure": { "departure": "Алматы", "arrival": "Франкфурт", "type": "round", "depTime": "2024-09-25T20:00:00Z", "arrTime": "2024-10-05T16:00:00Z", "airlines": ["Lufthansa", "Air Astana"], "providers": ["SABRE"] },
+      "railStructure": null,
+      "hotelStructure": null,
+      "approveTimeLimit": "2024-09-15T23:59:59Z",
+      "externalRequestIds": ["9995"]
+    },
+    {
+      "id": 12,
+      "createdAt": "2024-06-23T17:20:00Z",
+      "serviceType": "avia",
+      "initiatorType": "CLIENT",
+      "initiatorUserRole": { "id": 17, "roleKey": "CLIENT", "user": { "id": 17, "firstName": "Толеген", "lastName": "Касенов" } },
+      "traveler": { "id": 18, "firstName": "Сания", "lastName": "Жумабекова" },
+      "orderGroupFields": [
+        { "valueRu": "Командировка", "valueEn": "Business trip", "field": { "name": "Цель поездки", "shortName": "ЦП", "code": "purpose" } },
+        { "valueRu": "ТОО МедиаГрупп", "valueEn": "MediaGroup LLP", "field": { "name": "Компания", "shortName": "Компания", "code": "company" } }
+      ],
+      "totalPrice": 117000,
+      "currency": "KZT",
+      "approvedStatuses": ["rejected", "open"],
+      "externalStatuses": ["In Progress"],
+      "aviaStructure": { "departure": "Алматы", "arrival": "Тбилиси", "type": "round", "depTime": "2024-10-05T09:00:00Z", "arrTime": "2024-10-12T21:00:00Z", "airlines": ["Georgian Airways"], "providers": ["AMADEUS"] },
+      "railStructure": null,
+      "hotelStructure": null,
+      "approveTimeLimit": "2026-06-25T12:50:00Z",
+      "externalRequestIds": []
+    },
+    {
+      "id": 13,
+      "createdAt": "2024-06-25T11:00:00Z",
+      "serviceType": "avia",
+      "initiatorType": "TRAVELER",
+      "initiatorUserRole": { "id": 19, "roleKey": "TRAVELER", "user": { "id": 19, "firstName": "Берик", "lastName": "Дюсембаев" } },
+      "traveler": { "id": 19, "firstName": "Берик", "lastName": "Дюсембаев" },
+      "orderGroupFields": [
+        { "valueRu": "Семинар", "valueEn": "Seminar", "field": { "name": "Цель поездки", "shortName": "ЦП", "code": "purpose" } },
+        { "valueRu": "Финансовый", "valueEn": "Finance", "field": { "name": "Отдел", "shortName": "Отдел", "code": "department" } },
+        { "valueRu": "АО КазМунайГаз", "valueEn": "KazMunayGas JSC", "field": { "name": "Компания", "shortName": "Компания", "code": "company" } },
+        { "valueRu": "Северный", "valueEn": "North", "field": { "name": "Филиал", "shortName": "Филиал", "code": "branch" } }
+      ],
+      "totalPrice": 720000,
+      "currency": "KZT",
+      "approvedStatuses": ["rejected", "expired"],
+      "externalStatuses": ["Completed"],
+      "aviaStructure": { "departure": "Астана", "arrival": "Москва", "type": "round", "depTime": "2024-10-15T06:00:00Z", "arrTime": "2024-10-22T19:00:00Z", "airlines": ["S7 Airlines", "Air Astana"], "providers": ["GALILEO"] },
+      "railStructure": null,
+      "hotelStructure": null,
+      "approveTimeLimit": "2024-10-01T23:59:59Z",
+      "externalRequestIds": ["9996"]
+    },
+    {
+      "id": 14,
+      "createdAt": "2024-06-27T08:45:00Z",
+      "serviceType": "avia",
+      "initiatorType": "CLIENT",
+      "initiatorUserRole": { "id": 20, "roleKey": "CLIENT", "user": { "id": 20, "firstName": "Алия", "lastName": "Бектурова" } },
+      "traveler": { "id": 21, "firstName": "Нурлан", "lastName": "Сейткали" },
+      "orderGroupFields": [
+        { "valueRu": "Отпуск", "valueEn": "Vacation", "field": { "name": "Цель поездки", "shortName": "ЦП", "code": "purpose" } }
+      ],
+      "totalPrice": 445000,
+      "currency": "KZT",
+      "approvedStatuses": ["open", "expired"],
+      "externalStatuses": ["Resolved", "Closed"],
+      "aviaStructure": { "departure": "Алматы", "arrival": "Барселона", "type": "round", "depTime": "2024-10-28T21:30:00Z", "arrTime": "2024-11-07T15:00:00Z", "airlines": ["Iberia"], "providers": ["SABRE"] },
+      "railStructure": null,
+      "hotelStructure": null,
+      "approveTimeLimit": "2026-06-22T12:55:00Z",
+      "externalRequestIds": []
+    },
+    {
+      "id": 15,
+      "createdAt": "2024-06-29T09:30:00Z",
+      "serviceType": "avia",
+      "initiatorType": "TRAVELER",
+      "initiatorUserRole": { "id": 22, "roleKey": "TRAVELER", "user": { "id": 22, "firstName": "Гаухар", "lastName": "Сматова" } },
+      "traveler": { "id": 22, "firstName": "Гаухар", "lastName": "Сматова" },
+      "orderGroupFields": [
+        { "valueRu": "Командировка", "valueEn": "Business trip", "field": { "name": "Цель поездки", "shortName": "ЦП", "code": "purpose" } }
+      ],
+      "totalPrice": 142000,
+      "currency": "KZT",
+      "approvedStatuses": ["approved"],
+      "externalStatuses": ["Open"],
+      "aviaStructure": { "departure": "Алматы", "arrival": "Ташкент", "type": "one-way", "depTime": "2024-07-29T08:00:00Z", "arrTime": "2024-07-29T09:30:00Z", "airlines": ["Air Astana"], "providers": ["AMADEUS"] },
+      "railStructure": null,
+      "hotelStructure": null,
+      "approveTimeLimit": "2024-07-20T23:59:59Z",
+      "externalRequestIds": ["9997"]
+    },
+    {
+      "id": 16,
+      "createdAt": "2024-07-01T10:15:00Z",
+      "serviceType": "avia",
+      "initiatorType": "CLIENT",
+      "initiatorUserRole": { "id": 23, "roleKey": "CLIENT", "user": { "id": 23, "firstName": "Самат", "lastName": "Жунусов" } },
+      "traveler": { "id": 23, "firstName": "Самат", "lastName": "Жунусов" },
+      "orderGroupFields": [
+        { "valueRu": "Конференция", "valueEn": "Conference", "field": { "name": "Цель поездки", "shortName": "ЦП", "code": "purpose" } }
+      ],
+      "totalPrice": 268000,
+      "currency": "KZT",
+      "approvedStatuses": ["approved"],
+      "externalStatuses": ["Closed"],
+      "aviaStructure": { "departure": "Астана", "arrival": "Сеул", "type": "round", "depTime": "2024-08-02T03:00:00Z", "arrTime": "2024-08-12T19:00:00Z", "airlines": ["Korean Air"], "providers": ["SABRE"] },
+      "railStructure": null,
+      "hotelStructure": null,
+      "approveTimeLimit": "2024-07-25T23:59:59Z",
+      "externalRequestIds": ["9998"]
+    },
+    {
+      "id": 17,
+      "createdAt": "2024-07-03T13:40:00Z",
+      "serviceType": "avia",
+      "initiatorType": "TRAVELER",
+      "initiatorUserRole": { "id": 24, "roleKey": "TRAVELER", "user": { "id": 24, "firstName": "Айдана", "lastName": "Кенжебаева" } },
+      "traveler": { "id": 24, "firstName": "Айдана", "lastName": "Кенжебаева" },
+      "orderGroupFields": [
+        { "valueRu": "Отпуск", "valueEn": "Vacation", "field": { "name": "Цель поездки", "shortName": "ЦП", "code": "purpose" } }
+      ],
+      "totalPrice": 196000,
+      "currency": "KZT",
+      "approvedStatuses": ["approved"],
+      "externalStatuses": ["Resolved"],
+      "aviaStructure": { "departure": "Алматы", "arrival": "Анталья", "type": "round", "depTime": "2024-08-05T05:30:00Z", "arrTime": "2024-08-15T22:00:00Z", "airlines": ["Turkish Airlines"], "providers": ["GALILEO"] },
+      "railStructure": null,
+      "hotelStructure": null,
+      "approveTimeLimit": "2024-07-28T23:59:59Z",
+      "externalRequestIds": ["9999"]
+    },
+    {
+      "id": 16,
+      "createdAt": "2024-07-05T16:00:00Z",
+      "serviceType": "avia",
+      "initiatorType": "CLIENT",
+      "initiatorUserRole": { "id": 25, "roleKey": "CLIENT", "user": { "id": 25, "firstName": "Бекзат", "lastName": "Оспанов" } },
+      "traveler": { "id": 25, "firstName": "Тимур", "lastName": "Әбдіров" },
+      "orderGroupFields": [
+        { "valueRu": "Переговоры", "valueEn": "Negotiations", "field": { "name": "Цель поездки", "shortName": "ЦП", "code": "purpose" } }
+      ],
+      "totalPrice": 312000,
+      "currency": "KZT",
+      "approvedStatuses": ["rejected"],
+      "externalStatuses": ["Cancelled"],
+      "aviaStructure": { "departure": "Алматы", "arrival": "Дели", "type": "round", "depTime": "2024-08-08T07:00:00Z", "arrTime": "2024-08-18T14:00:00Z", "airlines": ["Air Astana"], "providers": ["AMADEUS"] },
+      "railStructure": null,
+      "hotelStructure": null,
+      "approveTimeLimit": "2024-07-30T23:59:59Z",
+      "externalRequestIds": ["10000"]
+    },
+    {
+      "id": 16,
+      "createdAt": "2024-07-07T08:20:00Z",
+      "serviceType": "avia",
+      "initiatorType": "TRAVELER",
+      "initiatorUserRole": { "id": 26, "roleKey": "TRAVELER", "user": { "id": 26, "firstName": "Назгуль", "lastName": "Игисинова" } },
+      "traveler": { "id": 26, "firstName": "Назгуль", "lastName": "Игисинова" },
+      "orderGroupFields": [
+        { "valueRu": "Обучение", "valueEn": "Training", "field": { "name": "Цель поездки", "shortName": "ЦП", "code": "purpose" } }
+      ],
+      "totalPrice": 174000,
+      "currency": "KZT",
+      "approvedStatuses": ["approved"],
+      "externalStatuses": ["Onhold"],
+      "aviaStructure": { "departure": "Астана", "arrival": "Тбилиси", "type": "one-way", "depTime": "2024-08-10T09:45:00Z", "arrTime": "2024-08-10T12:30:00Z", "airlines": ["Georgian Airways"], "providers": ["SABRE"] },
+      "railStructure": null,
+      "hotelStructure": null,
+      "approveTimeLimit": "2024-08-01T23:59:59Z",
+      "externalRequestIds": ["10001"]
+    },
+    {
+      "id": 20,
+      "createdAt": "2024-07-09T11:10:00Z",
+      "serviceType": "avia",
+      "initiatorType": "CLIENT",
+      "initiatorUserRole": { "id": 27, "roleKey": "CLIENT", "user": { "id": 27, "firstName": "Гульжан", "lastName": "Тастанбекова" } },
+      "traveler": { "id": 27, "firstName": "Ринат", "lastName": "Сапаров" },
+      "orderGroupFields": [
+        { "valueRu": "Командировка", "valueEn": "Business trip", "field": { "name": "Цель поездки", "shortName": "ЦП", "code": "purpose" } }
+      ],
+      "totalPrice": 221000,
+      "currency": "KZT",
+      "approvedStatuses": ["approved"],
+      "externalStatuses": ["Open", "Closed"],
+      "aviaStructure": { "departure": "Алматы", "arrival": "Баку", "type": "round", "depTime": "2024-08-12T06:30:00Z", "arrTime": "2024-08-22T20:00:00Z", "airlines": ["Azerbaijan Airlines"], "providers": ["AMADEUS"] },
+      "railStructure": null,
+      "hotelStructure": null,
+      "approveTimeLimit": "2024-08-03T23:59:59Z",
+      "externalRequestIds": ["10002"]
+    },
+    {
+      "id": 21,
+      "createdAt": "2024-07-11T14:30:00Z",
+      "serviceType": "avia",
+      "initiatorType": "TRAVELER",
+      "initiatorUserRole": { "id": 28, "roleKey": "TRAVELER", "user": { "id": 28, "firstName": "Мейрамбек", "lastName": "Дастанов" } },
+      "traveler": { "id": 28, "firstName": "Мейрамбек", "lastName": "Дастанов" },
+      "orderGroupFields": [
+        { "valueRu": "Конференция", "valueEn": "Conference", "field": { "name": "Цель поездки", "shortName": "ЦП", "code": "purpose" } }
+      ],
+      "totalPrice": 305000,
+      "currency": "KZT",
+      "approvedStatuses": ["approved"],
+      "externalStatuses": ["Closed", "Assigned"],
+      "aviaStructure": { "departure": "Астана", "arrival": "Минск", "type": "round", "depTime": "2024-08-14T05:00:00Z", "arrTime": "2024-08-24T18:00:00Z", "airlines": ["Belavia"], "providers": ["GALILEO"] },
+      "railStructure": null,
+      "hotelStructure": null,
+      "approveTimeLimit": "2024-08-05T23:59:59Z",
+      "externalRequestIds": ["10003"]
+    },
+    {
+      "id": 22,
+      "createdAt": "2024-07-13T09:50:00Z",
+      "serviceType": "avia",
+      "initiatorType": "CLIENT",
+      "initiatorUserRole": { "id": 29, "roleKey": "CLIENT", "user": { "id": 29, "firstName": "Асель", "lastName": "Қайратова" } },
+      "traveler": { "id": 29, "firstName": "Данияр", "lastName": "Бекенов" },
+      "orderGroupFields": [
+        { "valueRu": "Отпуск", "valueEn": "Vacation", "field": { "name": "Цель поездки", "shortName": "ЦП", "code": "purpose" } }
+      ],
+      "totalPrice": 256000,
+      "currency": "KZT",
+      "approvedStatuses": ["approved"],
+      "externalStatuses": ["Closed", "Closed"],
+      "aviaStructure": { "departure": "Алматы", "arrival": "Бангкок", "type": "round", "depTime": "2024-08-16T02:00:00Z", "arrTime": "2024-08-26T16:00:00Z", "airlines": ["Thai Airways"], "providers": ["SABRE"] },
+      "railStructure": null,
+      "hotelStructure": null,
+      "approveTimeLimit": "2024-08-07T23:59:59Z",
+      "externalRequestIds": ["10004"]
+    }
+  ],
+  "total": 22,
+  "page": 1,
+  "limit": 22
+}
