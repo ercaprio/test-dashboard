@@ -1,3 +1,4 @@
+import { OrdersPage } from "@pages/orders";
 import {
   createRouter,
   createRootRoute,
@@ -9,7 +10,7 @@ const rootRoute = createRootRoute();
 const indexRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: "/",
-  component: () => <div>Главная</div>,
+  component: () => <OrdersPage />,
 });
 
 const routeTree = rootRoute.addChildren([indexRoute]);
