@@ -24,9 +24,10 @@ export const handlers = [
     const start = page * size
     const items = data.slice(start, start + size)
 
+
     return HttpResponse.json({
       data: items,
-      total: data.length,
+      total: forSearch ? Math.ceil(data.length / size) : Math.ceil(ordersList.data.length / size),
       page,
       limit: size,
     })
