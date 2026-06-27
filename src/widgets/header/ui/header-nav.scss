@@ -1,0 +1,29 @@
+.header-nav {
+  &__item {
+    text-decoration: none;
+    color: #00040A;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 20px;
+    height: 100%;
+    position: relative;
+    padding-top: 10px;
+    padding-bottom: 12px;
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: #3291FF;
+      transition: width 0.3s ease;
+    }
+
+    &--active {
+      &::after {
+        width: 100%;
+      }
+    }
+  }
+}

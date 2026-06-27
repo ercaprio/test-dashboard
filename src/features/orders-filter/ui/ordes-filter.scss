@@ -1,0 +1,13 @@
+.filter-select {
+  input {
+    padding: 10px 12px;
+    height: 40px;
+    min-height: 40px;
+
+    &::placeholder {
+      color: #00040A;
+      font-weight: 400;
+      font-size: 15px;
+    }
+  }
+}

@@ -1,16 +1,17 @@
-import { useGetDashboardOrders, useGetOrders } from "@entities/order";
+import { Box, Text } from "@mantine/core";
+import { OrderStats } from "@widgets/orders-stats";
+import { OrdersTable } from "@widgets/orders-table";
 
 const OrdersPage = () => {
-  const { data } = useGetDashboardOrders();
-  const { data: ordersData } = useGetOrders({ size: 2 });
-
-  console.log("data: ", data);
-  console.log("ordersData: ", ordersData);
-
   return (
-    <div>
-      <div>ff</div>
-    </div>
+    <Box>
+      <Text c="#00040A" fw={600} size={"38px"} mt={16} mb={32}>
+        Заказы
+      </Text>
+
+      <OrderStats />
+      <OrdersTable />
+    </Box>
   );
 };
 

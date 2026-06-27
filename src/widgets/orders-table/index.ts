@@ -1,0 +1,1 @@
+export { default as OrdersTable } from './ui/orders-table';

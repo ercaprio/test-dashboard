@@ -1,0 +1,12 @@
+.header-user {
+  &__btn {
+    border: 1px solid #CDD1D4;
+    font-weight: 600;
+    font-size: 15px;
+
+    // таргетируем текст внутри кнопки
+    .mantine-Button-label {
+      color: #00040A;
+    }
+  }
+}

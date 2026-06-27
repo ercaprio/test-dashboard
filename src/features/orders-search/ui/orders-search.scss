@@ -1,0 +1,20 @@
+.search-select {
+  input {
+    padding: 10px 12px;
+    height: 40px;
+    min-height: 40px;
+    border-right: none;
+
+    &::placeholder {
+      color: #00040A;
+      font-weight: 400;
+      font-size: 15px;
+    }
+  }
+}
+
+.search-input {
+  padding: 10px 12px !important;
+  height: 40px !important;
+  min-height: 40px;
+}

@@ -1,7 +1,7 @@
 export type DashboardOrders = {
-  creatorsData: CreatorsData,
-  serviceTypesData: ServiceTypesData,
-  statusesData: StatusesData,
+  creatorsData: CreatorsData[],
+  serviceTypesData: ServiceTypesData[],
+  statusesData: StatusesData[],
   total: number,
 }
 
