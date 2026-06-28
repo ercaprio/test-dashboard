@@ -30,7 +30,7 @@ export type OrderItem = {
   initiatorType: string,
   initiatorUserRole: InitiatorUserRole,
   traveler: User,
-  orderGroupFields: OrderGroupFields,
+  orderGroupFields: OrderGroupFields[],
   totalPrice: number, 
   currency: string,
   approvedStatuses: string[],

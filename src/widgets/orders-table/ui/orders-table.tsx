@@ -3,19 +3,9 @@ import { CustomPagination } from "@features/custom-pagination";
 import { OrdersFilter } from "@features/orders-filter";
 import { OrdersSearch } from "@features/orders-search";
 import { SizeSelector } from "@features/size-selector";
-import { Flex, Box, Table, type TableData } from "@mantine/core";
+import { Flex, Box, Table, Checkbox } from "@mantine/core";
 import { useState } from "react";
-
-const tableData: TableData = {
-  head: ["Element position", "Atomic mass", "Symbol", "Element name"],
-  body: [
-    [6, 12.011, "C", "Carbon"],
-    [7, 14.007, "N", "Nitrogen"],
-    [39, 88.906, "Y", "Yttrium"],
-    [56, 137.33, "Ba", "Barium"],
-    [58, 140.12, "Ce", "Cerium"],
-  ],
-};
+import OrderRow from "./order-row";
 
 const OrdersTable = () => {
   const [activePage, setPage] = useState(1);
@@ -39,7 +29,33 @@ const OrdersTable = () => {
       </Flex>
 
       <Box>
-        <Table data={tableData} />
+        <Table highlightOnHover withRowBorders>
+          <Table.Thead
+            styles={{
+              thead: {
+                borderBottom: "none",
+              },
+            }}
+          >
+            <Table.Tr>
+              <Table.Th w={40}>
+                <Checkbox />
+              </Table.Th>{" "}
+              <Table.Th>Заказ</Table.Th>
+              <Table.Th>Пассажир</Table.Th>
+              <Table.Th>Доп. поля</Table.Th>
+              <Table.Th>Поездка</Table.Th>
+              <Table.Th>Стоимость</Table.Th>
+              <Table.Th>Утверждение</Table.Th>
+              <Table.Th>Исполнение</Table.Th>
+            </Table.Tr>
+          </Table.Thead>
+          <Table.Tbody>
+            {ordersData.data.map((order, i) => (
+              <OrderRow order={order} id={`${order.id}-${i}`} />
+            ))}
+          </Table.Tbody>
+        </Table>
 
         <Flex align={"center"} justify={"space-between"} mt={16}>
           <SizeSelector size={size} setSize={setSize} />

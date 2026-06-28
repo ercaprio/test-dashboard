@@ -4,7 +4,7 @@ import { OrdersTable } from "@widgets/orders-table";
 
 const OrdersPage = () => {
   return (
-    <Box>
+    <Box pb={32}>
       <Text c="#00040A" fw={600} size={"38px"} mt={16} mb={32}>
         Заказы
       </Text>

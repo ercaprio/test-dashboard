@@ -61,3 +61,31 @@ export const COST_OPTIONS = [
   { label: '50 000 – 100 000', value: '50000-100000' },
   { label: '100 000+',         value: '100000+' },
 ]
+
+export const INITIATOR_TYPE_LABELS = {
+  TRAVELER: 'Селфбукер',
+  CLIENT: 'Клиент',
+  ADMIN: 'Админ',
+}
+
+export const APPROVED_STATUSES_LABELS: Record<string, string>  = {
+  approved: 'УТВЕРЖДЕН',
+  rejected: 'ОТКЛОНЕН',
+  open: 'НОВЫЙ',
+  expired: 'ИСТЕК СРОК',
+}
+
+export const EXTERNAL_STATUSES_LABELS: Record<string, {
+  label: string
+  priority: number
+}
+> = {
+  'In Progress': { label: 'В РАБОТЕ',   priority: 6 }, 
+  Assigned:      { label: 'В РАБОТЕ',   priority: 5 },
+  Open:          { label: 'В РАБОТЕ',   priority: 5 },
+  Onhold:        { label: 'НА ПАУЗЕ',   priority: 3 },
+  Completed:     { label: 'ЗАВЕРШЕНА',  priority: 2 },
+  Cancelled:     { label: 'ОТМЕНЕНА',   priority: 1 },
+  Closed:        { label: 'ЗАКРЫТА',    priority: 0 }, 
+  Resolved:      { label: 'ЗАКРЫТА',    priority: 0 },
+}
