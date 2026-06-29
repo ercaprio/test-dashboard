@@ -11,7 +11,7 @@ import { IconChevronDown } from "@tabler/icons-react";
 import { useSearch } from "@tanstack/react-router";
 
 type Props = {
-  onChangeFilters: (filter, value: string | null) => void;
+  onChangeFilters: (filter: string, value: string | null) => void;
 };
 
 const OrdersFilter = ({ onChangeFilters }: Props) => {

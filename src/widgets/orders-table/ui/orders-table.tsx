@@ -3,7 +3,7 @@ import { CustomPagination } from "@features/custom-pagination";
 import { OrdersFilter } from "@features/orders-filter";
 import { OrdersSearch } from "@features/orders-search";
 import { SizeSelector } from "@features/size-selector";
-import { Flex, Box, Table, Checkbox, Text } from "@mantine/core";
+import { Flex, Box, Table, Checkbox, Text, Skeleton } from "@mantine/core";
 import { useState } from "react";
 import OrderRow from "./order-row";
 import { IconArrowNarrowDown, IconArrowNarrowUp } from "@tabler/icons-react";
@@ -34,14 +34,16 @@ const OrdersTable = () => {
   const onChangeFilters = (filter: string, value: string | null) =>
     navigate({ search: (prev) => ({ ...prev, [filter]: value, page: 1 }) });
 
-  const { data: ordersData } = useGetOrders({
+  const {
+    data: ordersData,
+    isLoading,
+    isFetching,
+  } = useGetOrders({
     pageable: activePage - 1,
     size: Number(size ?? 10),
     sort: sortOrder,
     ...(searchText ? { forSearch: searchText } : {}),
   });
-
-  if (!ordersData) return null;
 
   return (
     <>
@@ -118,20 +120,28 @@ const OrdersTable = () => {
           </Table.Thead>
 
           <Table.Tbody>
-            {ordersData.data?.map((order, i) => (
-              <OrderRow
-                key={`${order.id}-${i}`}
-                order={order}
-                id={`${order.id}-${i}`}
-              />
-            ))}
+            {isLoading || isFetching
+              ? Array.from({ length: Number(size) }).map((_, i) => (
+                  <Table.Tr key={i}>
+                    <Table.Td colSpan={8}>
+                      <Skeleton height={34} radius="xs" />
+                    </Table.Td>
+                  </Table.Tr>
+                ))
+              : ordersData?.data?.map((order, i) => (
+                  <OrderRow
+                    key={`${order.id}-${i}`}
+                    order={order}
+                    id={`${order.id}-${i}`}
+                  />
+                ))}
           </Table.Tbody>
         </Table>
 
         <Flex align="center" justify="space-between" mt={16}>
           <SizeSelector size={size} setSize={setSize} />
 
-          {ordersData.total > 1 && (
+          {ordersData && ordersData.total > 1 && (
             <CustomPagination
               total={ordersData.total}
               activePage={activePage}
