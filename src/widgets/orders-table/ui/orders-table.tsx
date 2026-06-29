@@ -8,6 +8,7 @@ import { useState } from "react";
 import OrderRow from "./order-row";
 import { IconArrowNarrowDown, IconArrowNarrowUp } from "@tabler/icons-react";
 import "./orders-table.scss";
+import { useNavigate, useSearch } from "@tanstack/react-router";
 
 const TH_STYLES = {
   c: "#9DA1A8",
@@ -16,10 +17,22 @@ const TH_STYLES = {
 } as const;
 
 const OrdersTable = () => {
-  const [activePage, setPage] = useState(1);
-  const [size, setSize] = useState<string | null>("10");
   const [searchText, setSearchText] = useState<string>("");
   const [sortOrder, setSortOrder] = useState<"asc" | "desc">("desc");
+  const { page, size } = useSearch({
+    from: "/",
+  });
+  const navigate = useNavigate({ from: "/" });
+  const activePage = Number(page ?? 1);
+
+  const setPage = (page: number) =>
+    navigate({ search: (prev) => ({ ...prev, page }) });
+
+  const setSize = (size: string | null) =>
+    navigate({ search: (prev) => ({ ...prev, size, page: 1 }) });
+
+  const onChangeFilters = (filter: string, value: string | null) =>
+    navigate({ search: (prev) => ({ ...prev, [filter]: value, page: 1 }) });
 
   const { data: ordersData } = useGetOrders({
     pageable: activePage - 1,
@@ -33,7 +46,7 @@ const OrdersTable = () => {
   return (
     <>
       <Flex align="center" justify="space-between" mb={16}>
-        <OrdersFilter />
+        <OrdersFilter onChangeFilters={onChangeFilters} />
         <OrdersSearch setSearchText={setSearchText} searchText={searchText} />
       </Flex>
 

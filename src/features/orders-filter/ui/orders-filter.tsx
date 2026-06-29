@@ -8,14 +8,53 @@ import {
 } from "@shared/config/constants";
 import "./ordes-filter.scss";
 import { IconChevronDown } from "@tabler/icons-react";
+import { useSearch } from "@tanstack/react-router";
 
-const OrdersFilter = () => {
+type Props = {
+  onChangeFilters: (filter, value: string | null) => void;
+};
+
+const OrdersFilter = ({ onChangeFilters }: Props) => {
+  const { role, service, status, period, cost } = useSearch({
+    from: "/",
+  });
+
   const filters = [
-    { placeholder: "Роль", data: ROLE_OPTIONS, w: 84 },
-    { placeholder: "Услуга", data: SERVICE_OPTIONS, w: 96 },
-    { placeholder: "Статус", data: STATUS_OPTIONS, w: 98 },
-    { placeholder: "Период", data: PERIOD_OPTIONS, w: 105 },
-    { placeholder: "Стоимость", data: COST_OPTIONS, w: 130 },
+    {
+      placeholder: "Роль",
+      data: ROLE_OPTIONS,
+      w: 84,
+      key: "role",
+      value: role,
+    },
+    {
+      placeholder: "Услуга",
+      data: SERVICE_OPTIONS,
+      w: 96,
+      key: "service",
+      value: service,
+    },
+    {
+      placeholder: "Статус",
+      data: STATUS_OPTIONS,
+      w: 98,
+      key: "status",
+      value: status,
+    },
+    {
+      placeholder: "Период",
+      data: PERIOD_OPTIONS,
+      w: 105,
+      key: "period",
+      value: period,
+    },
+    {
+      placeholder: "Стоимость",
+      data: COST_OPTIONS,
+      w: 130,
+      key: "cost",
+      value: cost,
+    },
   ];
 
   return (
@@ -25,7 +64,9 @@ const OrdersFilter = () => {
           key={filter.placeholder}
           placeholder={filter.placeholder}
           data={filter.data}
-          w={filter.w}
+          value={filter.value ?? null}
+          onChange={(v) => onChangeFilters(filter.key, v)}
+          clearable={Boolean(filter.value)}
           rightSection={<IconChevronDown size={20} color="#9DA1A8" />}
           rightSectionPointerEvents="none"
           radius={12}

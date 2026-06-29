@@ -18,6 +18,15 @@ const rootRoute = createRootRoute({
 const indexRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: "/",
+  validateSearch: (search: Record<string, unknown>) => ({
+    page: Number(search.page ?? 1),
+    size: String(search.size ?? "10"),
+    role: String(search.role ?? ""),
+    service: String(search.service ?? ""),
+    status: String(search.status ?? ""),
+    period: String(search.period ?? ""),
+    cost: String(search.cost ?? ""),
+  }),
   component: () => <OrdersPage />,
 });
 
