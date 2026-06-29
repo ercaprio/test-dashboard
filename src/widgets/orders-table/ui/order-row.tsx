@@ -1,13 +1,12 @@
 import type { OrderItem } from "@entities/order";
-import { Checkbox, Flex, Table, Text, Tooltip, Box } from "@mantine/core";
+import { Checkbox, Flex, Table, Text, Tooltip } from "@mantine/core";
 import {
-  APPROVED_STATUSES_LABELS,
   EXTERNAL_STATUSES_LABELS,
   INITIATOR_TYPE_LABELS,
 } from "@shared/config/constants";
-import formatDate from "@shared/lib/format-date";
-import formatNumbers from "@shared/lib/format-numbers";
-import { IconPlane } from "@tabler/icons-react";
+import { formatDate, formatNumbers } from "@shared/lib";
+import { IconPlane, IconReload } from "@tabler/icons-react";
+import TimerCell from "./timer-cell";
 
 type Props = {
   order: OrderItem;
@@ -19,14 +18,7 @@ const OrderRow = ({ order, id }: Props) => {
   const depDate = new Date(order.aviaStructure.depTime);
   const arrDate = new Date(order.aviaStructure.arrTime);
   const arrow = order.aviaStructure.type === "round" ? "⇌" : "-";
-
-  const getApprovedStatus = (statuses: string[]) => {
-    if (!statuses.every((s) => s === statuses[0])) {
-      return "ЧАСТИЧНО";
-    } else {
-      return APPROVED_STATUSES_LABELS[statuses[0]];
-    }
-  };
+  const isOpen = order.approvedStatuses.every((s) => s === "open");
 
   const getExternalStatus = (statuses: string[]) => {
     if (!statuses.every((s) => s === statuses[0])) {
@@ -36,11 +28,20 @@ const OrderRow = ({ order, id }: Props) => {
           EXTERNAL_STATUSES_LABELS[a]?.priority,
       )[0];
 
-      return EXTERNAL_STATUSES_LABELS[dominant]?.label;
+      return {
+        label: EXTERNAL_STATUSES_LABELS[dominant]?.label,
+        color: EXTERNAL_STATUSES_LABELS[dominant]?.color,
+      };
     } else {
-      return EXTERNAL_STATUSES_LABELS[statuses[0]]?.label;
+      return {
+        label: EXTERNAL_STATUSES_LABELS[statuses[0]]?.label,
+        color: EXTERNAL_STATUSES_LABELS[statuses[0]]?.color,
+      };
     }
   };
+
+  const externalStatus = getExternalStatus(order.externalStatuses).label;
+  const externalStatusColors = getExternalStatus(order.externalStatuses).color;
 
   return (
     <Table.Tr key={id}>
@@ -101,9 +102,12 @@ const OrderRow = ({ order, id }: Props) => {
             <Text>{`${order.aviaStructure.departure} ${arrow} ${order.aviaStructure.arrival}`}</Text>
           </Flex>
 
-          <Text>
-            {formatDate(depDate, "weekday")} - {formatDate(arrDate, "weekday")}{" "}
-            ·
+          <Flex>
+            <Text span>
+              {formatDate(depDate, "weekday")} -{" "}
+              {formatDate(arrDate, "weekday")} ·
+            </Text>
+
             <Tooltip
               label={
                 <Flex direction="column" gap={4}>
@@ -126,7 +130,7 @@ const OrderRow = ({ order, id }: Props) => {
                 )}
               </Flex>
             </Tooltip>
-          </Text>
+          </Flex>
         </Flex>
       </Table.Td>
 
@@ -135,14 +139,36 @@ const OrderRow = ({ order, id }: Props) => {
       </Table.Td>
 
       <Table.Td>
-        <Flex>
-          <Box>
-            <Text>{getApprovedStatus(order.approvedStatuses)}</Text>
-          </Box>
-        </Flex>
+        <TimerCell
+          createdAt={order.createdAt}
+          approveTimeLimit={order.approveTimeLimit}
+          isOpen={isOpen}
+          approvedStatuses={order.approvedStatuses}
+        />
       </Table.Td>
 
-      <Table.Td>{getExternalStatus(order.externalStatuses)}</Table.Td>
+      <Table.Td>
+        <Flex
+          align={"center"}
+          gap={2}
+          bg={externalStatusColors.light}
+          p={"2px 6px"}
+          style={{
+            border: `1px solid ${externalStatusColors.medium}`,
+            borderRadius: "4px",
+          }}
+        >
+          <IconReload
+            stroke={2}
+            size={16}
+            color={externalStatusColors.dark}
+            style={{ transform: "scaleX(-1)" }}
+          />
+          <Text c={externalStatusColors.dark} size="11px" fw={600}>
+            {externalStatus}
+          </Text>
+        </Flex>
+      </Table.Td>
     </Table.Tr>
   );
 };

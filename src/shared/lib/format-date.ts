@@ -1,4 +1,4 @@
-const formatDate = (date: Date, type: "hour" | "weekday") => {
+export const formatDate = (date: Date, type: "hour" | "weekday") => {
   const dayMonth = date
     .toLocaleDateString("ru-RU", {
       day: "2-digit",
@@ -17,5 +17,3 @@ const formatDate = (date: Date, type: "hour" | "weekday") => {
 
   return `${dayMonth}, ${timeType}`;
 };
-
-export default formatDate;

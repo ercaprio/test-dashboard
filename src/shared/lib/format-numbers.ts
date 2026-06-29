@@ -1,4 +1,4 @@
-const formatNumbers = (numbers: number): string => {
+export const formatNumbers = (numbers: number): string => {
   if (numbers == null) return "0";
 
   return Intl.NumberFormat("ru-RU", {
@@ -7,4 +7,3 @@ const formatNumbers = (numbers: number): string => {
   }).format(numbers);
 };
 
-export default formatNumbers;

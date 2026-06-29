@@ -6,7 +6,7 @@ import {
   CREATORS_TYPES,
   CREATORS_TYPES_COLORS,
 } from "@shared/config/constants";
-import formatNumbers from "@shared/lib/format-numbers";
+import { formatNumbers } from "@shared/lib";
 
 type Props = {
   data: CreatorsData[];

@@ -18,7 +18,7 @@
       "aviaStructure": { "departure": "Алматы", "arrival": "Москва", "type": "round", "depTime": "2024-07-01T10:00:00Z", "arrTime": "2024-07-10T18:00:00Z", "airlines": ["Air Astana"], "providers": ["AMADEUS"] },
       "railStructure": null,
       "hotelStructure": null,
-      "approveTimeLimit": "2026-07-08T23:59:59Z",
+      "approveTimeLimit": "2024-06-01T08:32:00Z",
       "externalRequestIds": []
     },
     {

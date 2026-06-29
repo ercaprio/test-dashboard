@@ -78,14 +78,59 @@ export const APPROVED_STATUSES_LABELS: Record<string, string>  = {
 export const EXTERNAL_STATUSES_LABELS: Record<string, {
   label: string
   priority: number
+  color: Record <string, string>
 }
 > = {
-  'In Progress': { label: 'В РАБОТЕ',   priority: 6 }, 
-  Assigned:      { label: 'В РАБОТЕ',   priority: 5 },
-  Open:          { label: 'В РАБОТЕ',   priority: 5 },
-  Onhold:        { label: 'НА ПАУЗЕ',   priority: 3 },
-  Completed:     { label: 'ЗАВЕРШЕНА',  priority: 2 },
-  Cancelled:     { label: 'ОТМЕНЕНА',   priority: 1 },
-  Closed:        { label: 'ЗАКРЫТА',    priority: 0 }, 
-  Resolved:      { label: 'ЗАКРЫТА',    priority: 0 },
+  'In Progress': {
+    label: 'В РАБОТЕ', priority: 6, color: {
+      dark:   '#78599E',
+      medium: '#BBABCC',
+      light:  '#F3EBFC',
+    }
+  }, 
+  Assigned:      { label: 'В РАБОТЕ',   priority: 5, color: {
+      dark:   '#78599E',
+      medium: '#BBABCC',
+      light:  '#F3EBFC',
+    }
+  }, 
+  Open:          { label: 'В РАБОТЕ',   priority: 5, color: {
+      dark:   '#78599E',
+      medium: '#BBABCC',
+      light:  '#F3EBFC',
+    }
+  }, 
+  Onhold: {
+    label: 'НА ПАУЗЕ', priority: 3, color: {
+      dark: '#F5A623',
+      medium: '#FAC97A',
+      light: '#FEF3E0'
+    }
+  },
+  Completed: {
+    label: 'ЗАВЕРШЕНА', priority: 2, color: {
+      dark: '#1A6AFF',
+      medium: '#7AAEFF',
+      light: '#E8F0FF'
+    }
+  },
+  Cancelled: {
+    label: 'ОТМЕНЕНА', priority: 1, color: {
+      dark: '#E53935',
+      medium: '#EF9A9A',
+      light: '#FFEBEE'
+    }
+  },
+  Closed:        { label: 'ЗАКРЫТА',    priority: 0, color: {
+      dark:   '#009683',
+      medium: '#74C2B8',
+      light:  '#E6F5F2',
+    }
+  }, 
+  Resolved:      { label: 'ЗАКРЫТА',    priority: 0,  color: {
+      dark:   '#009683',
+      medium: '#74C2B8',
+      light:  '#E6F5F2',
+    }
+  }, 
 }

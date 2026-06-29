@@ -1,6 +1,6 @@
 import { DonutChart } from "@mantine/charts";
 import { Box, Flex, Grid, Paper, Text } from "@mantine/core";
-import formatNumbers from "@shared/lib/format-numbers";
+import { formatNumbers } from "@shared/lib";
 
 type ChartItem = {
   name: string;

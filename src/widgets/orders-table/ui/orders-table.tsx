@@ -17,8 +17,6 @@ const OrdersTable = () => {
     ...(searchText ? { forSearch: searchText } : {}),
   });
 
-  console.log("ordersData: ", ordersData);
-
   if (!ordersData) return null;
 
   return (
@@ -40,7 +38,7 @@ const OrdersTable = () => {
             <Table.Tr>
               <Table.Th w={40}>
                 <Checkbox />
-              </Table.Th>{" "}
+              </Table.Th>
               <Table.Th>Заказ</Table.Th>
               <Table.Th>Пассажир</Table.Th>
               <Table.Th>Доп. поля</Table.Th>
@@ -52,7 +50,11 @@ const OrdersTable = () => {
           </Table.Thead>
           <Table.Tbody>
             {ordersData.data.map((order, i) => (
-              <OrderRow order={order} id={`${order.id}-${i}`} />
+              <OrderRow
+                key={`${order.id}-${i}`}
+                order={order}
+                id={`${order.id}-${i}`}
+              />
             ))}
           </Table.Tbody>
         </Table>
