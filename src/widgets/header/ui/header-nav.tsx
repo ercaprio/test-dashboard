@@ -24,6 +24,15 @@ const HeaderNav = () => {
         </Link>
         <Link
           to="/"
+          search={{
+            page: 1,
+            size: "10",
+            role: "",
+            service: "",
+            status: "",
+            period: "",
+            cost: "",
+          }}
           activeProps={{ className: "header-nav__item--active" }}
           className="header-nav__item"
         >
