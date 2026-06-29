@@ -36,6 +36,16 @@ export const handlers = [
 
     await randomDelay();
 
+    const scenario = Math.random();
+
+    if (scenario < 0.2) {
+      return HttpResponse.json({ message: 'Internal Server Error' }, { status: 500 });
+    }
+
+    if (scenario < 0.35) {
+      return HttpResponse.json({ data: [], total: 0, page: 0, limit: 10 });
+    }
+    
     return HttpResponse.json({
       data: items,
       total: forSearch ? Math.ceil(data.length / size) : Math.ceil(ordersList.data.length / size),

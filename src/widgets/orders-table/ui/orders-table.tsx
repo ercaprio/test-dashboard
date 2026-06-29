@@ -3,7 +3,15 @@ import { CustomPagination } from "@features/custom-pagination";
 import { OrdersFilter } from "@features/orders-filter";
 import { OrdersSearch } from "@features/orders-search";
 import { SizeSelector } from "@features/size-selector";
-import { Flex, Box, Table, Checkbox, Text, Skeleton } from "@mantine/core";
+import {
+  Flex,
+  Box,
+  Table,
+  Checkbox,
+  Text,
+  Skeleton,
+  Button,
+} from "@mantine/core";
 import { useState } from "react";
 import OrderRow from "./order-row";
 import { IconArrowNarrowDown, IconArrowNarrowUp } from "@tabler/icons-react";
@@ -38,12 +46,16 @@ const OrdersTable = () => {
     data: ordersData,
     isLoading,
     isFetching,
+    isError,
+    refetch,
   } = useGetOrders({
     pageable: activePage - 1,
     size: Number(size ?? 10),
     sort: sortOrder,
     ...(searchText ? { forSearch: searchText } : {}),
   });
+
+  console.log("isError", isError);
 
   return (
     <>
@@ -120,21 +132,58 @@ const OrdersTable = () => {
           </Table.Thead>
 
           <Table.Tbody>
-            {isLoading || isFetching
-              ? Array.from({ length: Number(size) }).map((_, i) => (
-                  <Table.Tr key={i}>
-                    <Table.Td colSpan={8}>
-                      <Skeleton height={34} radius="xs" />
-                    </Table.Td>
-                  </Table.Tr>
-                ))
-              : ordersData?.data?.map((order, i) => (
-                  <OrderRow
-                    key={`${order.id}-${i}`}
-                    order={order}
-                    id={`${order.id}-${i}`}
-                  />
-                ))}
+            {isLoading || isFetching ? (
+              Array.from({ length: Number(size) }).map((_, i) => (
+                <Table.Tr key={i}>
+                  <Table.Td colSpan={8}>
+                    <Skeleton height={34} radius="10px" />
+                  </Table.Td>
+                </Table.Tr>
+              ))
+            ) : isError ? (
+              <Table.Tr>
+                <Table.Td colSpan={8}>
+                  <Flex
+                    justify="center"
+                    align="center"
+                    gap={12}
+                    pt={40}
+                    pb={40}
+                    direction={"column"}
+                  >
+                    <Text c="#9DA1A8" size="13px" fw={600}>
+                      Не удалось загрузить данные
+                    </Text>
+
+                    <Button
+                      variant="filled"
+                      size="xs"
+                      onClick={() => refetch()}
+                    >
+                      Повторить
+                    </Button>
+                  </Flex>
+                </Table.Td>
+              </Table.Tr>
+            ) : ordersData?.data?.length === 0 ? (
+              <Table.Tr>
+                <Table.Td colSpan={8}>
+                  <Flex justify="center" py={40}>
+                    <Text c="#9DA1A8" size="13px" fw={600}>
+                      Заказы не найдены
+                    </Text>
+                  </Flex>
+                </Table.Td>
+              </Table.Tr>
+            ) : (
+              ordersData?.data?.map((order, i) => (
+                <OrderRow
+                  key={`${order.id}-${i}`}
+                  order={order}
+                  id={`${order.id}-${i}`}
+                />
+              ))
+            )}
           </Table.Tbody>
         </Table>
 
