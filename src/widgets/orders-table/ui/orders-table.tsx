@@ -55,8 +55,6 @@ const OrdersTable = () => {
     ...(searchText ? { forSearch: searchText } : {}),
   });
 
-  console.log("isError", isError);
-
   return (
     <>
       <Flex align="center" justify="space-between" mb={16}>
