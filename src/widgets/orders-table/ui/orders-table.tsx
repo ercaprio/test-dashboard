@@ -24,6 +24,7 @@ const OrdersTable = () => {
   const { data: ordersData } = useGetOrders({
     pageable: activePage - 1,
     size: Number(size ?? 10),
+    sort: sortOrder,
     ...(searchText ? { forSearch: searchText } : {}),
   });
 

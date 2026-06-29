@@ -41,8 +41,9 @@ export type OrderItem = {
 }
 
 export type OrdersParams = {
-  forSearch?: string
-  size?: number
+  forSearch?: string,
+  size?: number,
+  sort?: "asc" | "desc",
   pageable?: number,
 }
 

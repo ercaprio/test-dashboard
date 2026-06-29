@@ -10,6 +10,7 @@ export const handlers = [
     const forSearch = url.searchParams.get('forSearch') ?? ''
     const size = Number(url.searchParams.get('size')) || 10
     const page = Number(url.searchParams.get('pageable')) || 0
+    const sort = url.searchParams.get('sort') ?? 'desc'
 
     let data = [...ordersList.data]
 
@@ -21,9 +22,14 @@ export const handlers = [
       })
     }
 
+    data.sort((a, b) => {
+      const dateA = new Date(a.createdAt).getTime()
+      const dateB = new Date(b.createdAt).getTime()
+      return sort === 'asc' ? dateA - dateB : dateB - dateA
+    })
+
     const start = page * size
     const items = data.slice(start, start + size)
-
 
     return HttpResponse.json({
       data: items,
