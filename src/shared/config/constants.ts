@@ -68,19 +68,62 @@ export const INITIATOR_TYPE_LABELS = {
   ADMIN: 'Админ',
 }
 
-export const APPROVED_STATUSES_LABELS: Record<string, string>  = {
-  approved: 'УТВЕРЖДЕН',
-  rejected: 'ОТКЛОНЕН',
-  open: 'НОВЫЙ',
-  expired: 'ИСТЕК СРОК',
+type StatusColor = {
+  dark?: string
+  medium?: string
+  light?: string
 }
 
-export const EXTERNAL_STATUSES_LABELS: Record<string, {
+type ApprovedStatusValue = {
+  label: string
+  color: StatusColor
+}
+
+type ExternalStatusValue = {
   label: string
   priority: number
-  color: Record <string, string>
+  color: StatusColor
 }
-> = {
+
+export const APPROVED_STATUSES_LABELS: Record<string, ApprovedStatusValue> = {
+  approved: {
+    label: 'УТВЕРЖДЕН',
+    color: {
+      dark: '#009683',
+      light: '#E6F5F2 ',
+    }
+  },
+  rejected: {
+    label: 'ОТКЛОНЕН',
+    color: {
+      dark: '#ED413F',
+      light: '#F5E8E8',
+    }
+  },
+  open: {
+    label: 'НОВЫЙ',
+    color: {
+      dark: '#1F87FF',
+      light: '#E8F2FF',
+    }
+  },
+  expired: {
+    label: 'ИСТЕК СРОК',
+    color: {
+      dark: '#9DA1A8',
+      light: '#E6E7E8',
+    }
+  },
+  partially: {
+    label: 'ЧАСТИЧНО',
+    color: {
+      dark: '#FC784C',
+      light: '#F7EEEB',
+    }
+  },
+}
+
+export const EXTERNAL_STATUSES_LABELS: Record<string, ExternalStatusValue> = {
   'In Progress': {
     label: 'В РАБОТЕ', priority: 6, color: {
       dark:   '#78599E',

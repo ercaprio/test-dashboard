@@ -13,6 +13,15 @@ type Props = {
   id: string;
 };
 
+const TOOLTIP_STYLES = {
+  tooltip: {
+    backgroundColor: "#EFF0F1",
+    border: "1px solid #00040A",
+    color: "#00040A",
+    borderRadius: "8px",
+  },
+} as const;
+
 const OrderRow = ({ order, id }: Props) => {
   const orderDate = new Date(order.createdAt);
   const depDate = new Date(order.aviaStructure.depTime);
@@ -40,30 +49,37 @@ const OrderRow = ({ order, id }: Props) => {
     }
   };
 
-  const externalStatus = getExternalStatus(order.externalStatuses).label;
-  const externalStatusColors = getExternalStatus(order.externalStatuses).color;
+  const externalStatus = getExternalStatus(order.externalStatuses);
 
   return (
-    <Table.Tr key={id}>
+    <Table.Tr>
       <Table.Td>
-        <Checkbox />
+        <Checkbox size="14px" />
       </Table.Td>
 
       <Table.Td>
-        <Text fw={600}>#{id}</Text>
-        <Text>{formatDate(orderDate, "hour")}</Text>
+        <Flex direction="column" gap={4}>
+          <Text c="#00040A" size="13px" fw={400}>
+            #{id}
+          </Text>
+          <Text c="#9DA1A8" size="11px" fw={400}>
+            {formatDate(orderDate, "hour")}
+          </Text>
+        </Flex>
       </Table.Td>
 
       <Table.Td>
-        <Text>
-          {order.traveler.lastName} {order.traveler.firstName}
-        </Text>
+        <Flex direction="column" gap={4}>
+          <Text c="#00040A" size="13px" fw={400}>
+            {order.traveler.lastName} {order.traveler.firstName}
+          </Text>
 
-        <Text>
-          {order.initiatorType === "TRAVELER"
-            ? INITIATOR_TYPE_LABELS[order.initiatorType]
-            : `${order.initiatorUserRole.user.lastName} ${order.initiatorUserRole.user.firstName}`}
-        </Text>
+          <Text c="#9DA1A8" size="11px" fw={400}>
+            {order.initiatorType === "TRAVELER"
+              ? INITIATOR_TYPE_LABELS[order.initiatorType]
+              : `${order.initiatorUserRole.user.lastName} ${order.initiatorUserRole.user.firstName}`}
+          </Text>
+        </Flex>
       </Table.Td>
 
       <Table.Td>
@@ -71,23 +87,41 @@ const OrderRow = ({ order, id }: Props) => {
           label={
             <Flex direction="column" gap={4}>
               {order.orderGroupFields.map((item, i) => (
-                <Text key={`${item.valueEn}-${i}`}>
+                <Text
+                  key={`${item.valueEn}-${i}`}
+                  c="#00040A"
+                  size="13px"
+                  fw={400}
+                >
                   {item.field.shortName}: {item.valueRu}
                 </Text>
               ))}
             </Flex>
           }
           disabled={order.orderGroupFields.length <= 2}
+          position="top-start"
+          styles={TOOLTIP_STYLES}
         >
-          <Flex direction="column" gap={4}>
+          <Flex
+            direction="column"
+            gap={4}
+            style={{
+              cursor: order.orderGroupFields.length > 2 ? "pointer" : "default",
+            }}
+          >
             {order.orderGroupFields.slice(0, 2).map((item, i) => (
-              <Text key={`${item.valueEn}-${i}`}>
+              <Text
+                key={`${item.valueEn}-${i}`}
+                c="#00040A"
+                size="11px"
+                fw={400}
+              >
                 {item.field.shortName}: {item.valueRu}
               </Text>
             ))}
 
             {order.orderGroupFields.length > 2 && (
-              <Text style={{ cursor: "pointer" }}>
+              <Text c="#1F87FF" size="11px" fw={400}>
                 еще +{order.orderGroupFields.length - 2}
               </Text>
             )}
@@ -96,77 +130,98 @@ const OrderRow = ({ order, id }: Props) => {
       </Table.Td>
 
       <Table.Td>
-        <Flex direction={"column"}>
-          <Flex align={"center"} gap={4}>
-            <IconPlane size={14} color="#00040A" stroke={2} />
-            <Text>{`${order.aviaStructure.departure} ${arrow} ${order.aviaStructure.arrival}`}</Text>
+        <Tooltip
+          label={
+            <Flex direction="column" gap={4}>
+              {order.aviaStructure.airlines.map((item, i) => (
+                <Text key={`${item}-${i}`} c="#00040A" size="11px" fw={400}>
+                  {item}
+                </Text>
+              ))}
+            </Flex>
+          }
+          disabled={order.aviaStructure.airlines.length <= 1}
+          position="top-start"
+          styles={TOOLTIP_STYLES}
+        >
+          <Flex
+            direction={"column"}
+            align={"flex-start"}
+            gap={4}
+            style={{
+              cursor:
+                order.aviaStructure.airlines.length > 1 ? "pointer" : "default",
+            }}
+          >
+            <Flex align={"center"} gap={4}>
+              <IconPlane size={14} color="#00040A" stroke={2} />
+              <Text
+                c="#00040A"
+                size="13px"
+                fw={400}
+              >{`${order.aviaStructure.departure} ${arrow} ${order.aviaStructure.arrival}`}</Text>
+            </Flex>
+
+            <Flex align={"center"} gap={4}>
+              <Text c="#9DA1A8" size="11px" fw={400}>
+                {formatDate(depDate, "weekday")} -{" "}
+                {formatDate(arrDate, "weekday")} ·
+              </Text>
+
+              <Text c="#9DA1A8" size="11px" fw={400}>
+                {order.aviaStructure.airlines[0]}
+              </Text>
+            </Flex>
+
+            {order.aviaStructure.airlines.length > 1 && (
+              <Text c="#1F87FF" size="11px" fw={400}>
+                еще +{order.aviaStructure.airlines.length - 1}
+              </Text>
+            )}
           </Flex>
+        </Tooltip>
+      </Table.Td>
 
-          <Flex>
-            <Text span>
-              {formatDate(depDate, "weekday")} -{" "}
-              {formatDate(arrDate, "weekday")} ·
-            </Text>
+      <Table.Td>
+        <Text color="#00040A" size="13px" fw={600} ta={"end"}>
+          {formatNumbers(order.totalPrice)} ₸
+        </Text>
+      </Table.Td>
 
-            <Tooltip
-              label={
-                <Flex direction="column" gap={4}>
-                  {order.aviaStructure.airlines.map((item, i) => (
-                    <Text key={`${item}-${i}`}>{item}</Text>
-                  ))}
-                </Flex>
-              }
-              disabled={order.aviaStructure.airlines.length <= 1}
-            >
-              <Flex gap={2} align={"center"} direction="column">
-                {order.aviaStructure.airlines.slice(0, 1).map((item, i) => (
-                  <Text key={`${item}-${i}`}>{item}</Text>
-                ))}
-
-                {order.aviaStructure.airlines.length > 1 && (
-                  <Text style={{ cursor: "pointer" }}>
-                    еще +{order.aviaStructure.airlines.length - 1}
-                  </Text>
-                )}
-              </Flex>
-            </Tooltip>
-          </Flex>
+      <Table.Td>
+        <Flex justify="flex-end" align={"center"}>
+          <TimerCell
+            createdAt={order.createdAt}
+            approveTimeLimit={order.approveTimeLimit}
+            isOpen={isOpen}
+            approvedStatuses={order.approvedStatuses}
+          />
         </Flex>
       </Table.Td>
 
       <Table.Td>
-        <Text>{formatNumbers(order.totalPrice)} ₸</Text>
-      </Table.Td>
-
-      <Table.Td>
-        <TimerCell
-          createdAt={order.createdAt}
-          approveTimeLimit={order.approveTimeLimit}
-          isOpen={isOpen}
-          approvedStatuses={order.approvedStatuses}
-        />
-      </Table.Td>
-
-      <Table.Td>
-        <Flex
-          align={"center"}
-          gap={2}
-          bg={externalStatusColors.light}
-          p={"2px 6px"}
-          style={{
-            border: `1px solid ${externalStatusColors.medium}`,
-            borderRadius: "4px",
-          }}
-        >
-          <IconReload
-            stroke={2}
-            size={16}
-            color={externalStatusColors.dark}
-            style={{ transform: "scaleX(-1)" }}
-          />
-          <Text c={externalStatusColors.dark} size="11px" fw={600}>
-            {externalStatus}
-          </Text>
+        <Flex justify="flex-end" align={"center"}>
+          <Flex
+            align={"center"}
+            gap={2}
+            bg={externalStatus.color.light}
+            p={"2px 6px"}
+            style={{
+              border: `1px solid ${externalStatus.color.medium}`,
+              borderRadius: "4px",
+            }}
+            w="fit-content"
+          >
+            <IconReload
+              stroke={2}
+              size={16}
+              color={externalStatus.color.dark}
+              style={{ transform: "scaleX(-1)" }}
+            />
+            <Text c={externalStatus.color.dark} size="11px" fw={600}>
+              {externalStatus.label}
+            </Text>
+          </Flex>
         </Flex>
       </Table.Td>
     </Table.Tr>

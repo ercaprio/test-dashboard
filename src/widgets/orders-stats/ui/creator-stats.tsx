@@ -1,7 +1,7 @@
 import type { CreatorsData } from "@entities/order/model/types";
 import { Box, Flex, Grid, Paper, Text } from "@mantine/core";
 import { DonutChart } from "@mantine/charts";
-import { useMemo } from "react";
+import { Fragment, useMemo } from "react";
 import {
   CREATORS_TYPES,
   CREATORS_TYPES_COLORS,
@@ -40,8 +40,8 @@ const CreatorsStats = ({ data }: Props) => {
 
         <Grid w="100%" rowGap={10} columnGap={10}>
           {charData.map((item, i) => (
-            <>
-              <Grid.Col span={6} key={`${item.name}-${i}`}>
+            <Fragment key={`${item.name}-${i}`}>
+              <Grid.Col span={6}>
                 <Flex align="center" gap={6}>
                   <Box
                     w={6}
@@ -69,7 +69,7 @@ const CreatorsStats = ({ data }: Props) => {
                   {formatNumbers(item.percentage)}%
                 </Text>
               </Grid.Col>
-            </>
+            </Fragment>
           ))}
         </Grid>
       </Flex>

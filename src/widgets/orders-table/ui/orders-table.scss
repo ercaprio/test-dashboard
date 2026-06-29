@@ -1,0 +1,23 @@
+.orders-table {
+  border-radius: 15px;
+  border-collapse: separate;
+  border-spacing: 0;
+  overflow: hidden;
+}
+
+.orders-thead {
+  background-color: #EFF0F1;
+  border-bottom: none;
+}
+
+.orders-tbody {
+  background-color: #fff;
+}
+
+.orders-th {
+  padding: 11px 10px;
+}
+
+.orders-sort-th {
+  cursor: pointer;
+}

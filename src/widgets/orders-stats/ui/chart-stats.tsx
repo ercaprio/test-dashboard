@@ -1,6 +1,7 @@
 import { DonutChart } from "@mantine/charts";
 import { Box, Flex, Grid, Paper, Text } from "@mantine/core";
 import { formatNumbers } from "@shared/lib";
+import { Fragment } from "react";
 
 type ChartItem = {
   name: string;
@@ -31,8 +32,8 @@ const ChartStats = ({ charData, title }: Props) => {
 
         <Grid w="100%" rowGap={10} columnGap={10}>
           {charData.map((item, i) => (
-            <>
-              <Grid.Col span={6} key={`${item.name}-${i}`}>
+            <Fragment key={`${item.name}-${i}`}>
+              <Grid.Col span={6}>
                 <Flex align="center" gap={6}>
                   <Box
                     w={6}
@@ -60,7 +61,7 @@ const ChartStats = ({ charData, title }: Props) => {
                   {formatNumbers(item.percentage)}%
                 </Text>
               </Grid.Col>
-            </>
+            </Fragment>
           ))}
         </Grid>
       </Flex>

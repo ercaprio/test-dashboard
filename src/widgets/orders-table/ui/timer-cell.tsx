@@ -1,6 +1,7 @@
 import { Text, Flex, Box } from "@mantine/core";
 import { APPROVED_STATUSES_LABELS } from "@shared/config/constants";
 import { useCountdown } from "./use-countdown";
+import { IconClock } from "@tabler/icons-react";
 
 type Props = {
   createdAt: string;
@@ -21,25 +22,44 @@ const TimerCell = ({
     isOpen,
   );
 
-  const getApprovedStatus = () => {
-    if (isExpired) return APPROVED_STATUSES_LABELS["expired"];
-    if (!approvedStatuses.every((s) => s === approvedStatuses[0]))
-      return "ЧАСТИЧНО";
-    return APPROVED_STATUSES_LABELS[approvedStatuses[0]];
-  };
+  const statusKey = isExpired
+    ? "expired"
+    : !approvedStatuses.every((s) => s === approvedStatuses[0])
+      ? "partially"
+      : approvedStatuses[0];
+
+  const status = APPROVED_STATUSES_LABELS[statusKey];
 
   return (
-    <Flex>
+    <Flex align="center" gap={4}>
       {isOpen && !isExpired && (
-        <Box>
-          <Text>
+        <Flex
+          align="center"
+          gap={4}
+          bg={status.color.light}
+          p="2px 6px"
+          style={{ borderRadius: "4px" }}
+        >
+          <IconClock stroke={2} size={16} color={status.color.dark} />
+          <Text
+            c={status.color.dark}
+            size="11px"
+            fw={600}
+            style={{
+              fontVariantNumeric: "tabular-nums",
+              fontFeatureSettings: '"tnum"',
+            }}
+          >
             {String(hours).padStart(2, "0")}:{String(minutes).padStart(2, "0")}:
             {String(seconds).padStart(2, "0")}
           </Text>
-        </Box>
+        </Flex>
       )}
-      <Box>
-        <Text>{getApprovedStatus()}</Text>
+
+      <Box bg={status.color.light} p="4px 6px" style={{ borderRadius: "4px" }}>
+        <Text c={status.color.dark} size="11px" fw={600}>
+          {status.label}
+        </Text>
       </Box>
     </Flex>
   );
